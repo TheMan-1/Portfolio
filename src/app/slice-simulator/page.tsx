@@ -1,20 +1,15 @@
-import {
-  SliceSimulator,
-  SliceSimulatorParams,
-  getSlices,
-} from "@slicemachine/adapter-next/simulator";
-import { SliceZone } from "@prismicio/react";
+"use client"
 
-import { components } from "../../slices";
+import { SliceSimulator } from "@slicemachine/adapter-next/simulator"
+import { SliceZone } from "@prismicio/react"
 
-export default function SliceSimulatorPage({
-  searchParams,
-}: SliceSimulatorParams) {
-  const slices = getSlices(searchParams.state);
+import { components } from "../../slices"
 
+export default function SliceSimulatorPage() {
   return (
-    <SliceSimulator>
-      <SliceZone slices={slices} components={components} />
-    </SliceSimulator>
-  );
+    <SliceSimulator
+      background="#121b2f"
+      sliceZone={(props) => <SliceZone {...props} components={components} />}
+    />
+  )
 }
