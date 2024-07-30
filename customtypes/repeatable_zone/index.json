@@ -1,0 +1,17 @@
+{
+  "format": "custom",
+  "id": "repeatable_zone",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      }
+    }
+  },
+  "label": "Repeatable Zone",
+  "repeatable": true,
+  "status": true
+}
