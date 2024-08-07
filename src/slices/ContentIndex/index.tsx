@@ -1,14 +1,14 @@
-import Bounded from "@/components/Bounded"
-import Heading from "@/components/Heading"
-import { Content, isFilled } from "@prismicio/client"
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react"
-import ContentList from "./ContentList"
-import { createClient } from "@/prismicio"
+import Bounded from "@/components/Bounded";
+import Heading from "@/components/Heading";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import ContentList from "./ContentList";
+import { createClient } from "@/prismicio";
 
 /**
  * Props for `ContentIndex`.
  */
-export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>
+export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>;
 
 /**
  * Component for "ContentIndex" Slices.
@@ -16,13 +16,13 @@ export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>
 const ContentIndex = async ({
   slice,
 }: ContentIndexProps): Promise<JSX.Element> => {
-  const client = createClient()
-  const blogPosts = await client.getAllByType("blog_post")
-  const projects = await client.getAllByType("project")
+  const client = createClient();
+  const blogPosts = await client.getAllByType("blog_post");
+  const projects = await client.getAllByType("project");
 
-  const contentType = slice.primary.content_type || "Blog"
+  const contentType = slice.primary.content_type || "Blog";
 
-  const items = contentType === "Blog" ? blogPosts : projects
+  const items = contentType === "Blog" ? blogPosts : projects;
 
   return (
     <Bounded
@@ -33,7 +33,7 @@ const ContentIndex = async ({
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (
-        <div className="prose prose-cl prose-invert mb-10">
+        <div className="prose-cl prose prose-invert mb-10">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}
@@ -45,13 +45,7 @@ const ContentIndex = async ({
         fallbackItemImage={slice.primary.fallback_item_image}
       />
     </Bounded>
-  )
-}
+  );
+};
 
-{
-  /* items={items}
-  contentType={contentType}
-  viewMoreText={slice.primary.view_more_text}
-  fallbackItemImage={slice.primary.fallback_item_image} */
-}
-export default ContentIndex
+export default ContentIndex;
